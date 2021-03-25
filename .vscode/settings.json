@@ -1,0 +1,11 @@
+{
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Consolas, 'Courier New', monospace, 'Fira Code'",
+  "[json]": {
+  
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  }
+}
