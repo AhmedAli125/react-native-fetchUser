@@ -9,7 +9,6 @@ import {
 } from '../constants/type';
 
 export const getUsers = (payload) => {
-  console.log('from Actions', payload);
   return {
     type: GET_USERS,
     payload,

@@ -14,8 +14,6 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
-  // usersLength: 0,
-  // deletedUsersLength: 0,
   totalPages: 0,
 };
 
@@ -27,10 +25,18 @@ export default (state = initialState, action) => {
         loading: true,
       };
     case USERS_FETCHED:
+      let payload = action.payload.data;
+      // let deletedUser;
+      let userState = payload.filter((user) => {
+        if (state.deletedUsers.length !== 0) {
+          return !state.deletedUsers.find((deleted) => deleted.id === user.id);
+        } else {
+          return user;
+        }
+      });
       return {
         ...state,
-        users: action.payload.data,
-        // usersLength: action.payload.data.length,
+        users: userState,
         loading: false,
         totalPages: action.payload.total_pages,
       };
@@ -64,8 +70,6 @@ export default (state = initialState, action) => {
         ...state,
         users: allUsers,
         deletedUsers: newDeletedUsers,
-        // usersLength: allUsers.length,
-        // deletedUsersLength: newDeletedUsers.length,
       };
     case REMOVE_FROM_DELETED:
       let recoveredUser = state.deletedUsers.find(
