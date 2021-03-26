@@ -74,6 +74,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
+  infoText: {
+    paddingTop: 60,
+    fontSize: 22,
+    textAlign: 'center',
+  },
 });
 
 export default styles;

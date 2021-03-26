@@ -6,6 +6,7 @@ import {
   CLEAR_CURRENT_USER,
   DELETE_USER,
   REMOVE_FROM_DELETED,
+  REMOVE_TOAST,
 } from '../constants/type';
 
 export const getUsers = (payload) => {
@@ -53,5 +54,11 @@ export const removeFromDeleted = (payload) => {
   return {
     type: REMOVE_FROM_DELETED,
     payload,
+  };
+};
+
+export const removeToast = () => {
+  return {
+    type: REMOVE_TOAST,
   };
 };
