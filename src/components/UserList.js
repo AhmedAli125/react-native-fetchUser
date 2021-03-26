@@ -2,13 +2,10 @@ import React from 'react';
 import UserCard from './UserCard';
 import {connect} from 'react-redux';
 import {ScrollView, View, Text} from 'react-native';
-const UserList = ({users}) => {
-  if (users === undefined) {
-    return (
-      <View>
-        <Text>No Users Found</Text>
-      </View>
-    );
+import {Spinner} from 'native-base';
+const UserList = ({users, loading}) => {
+  if (loading) {
+    return <Spinner color="blue" />;
   }
 
   return (
@@ -23,6 +20,7 @@ const UserList = ({users}) => {
 const mapStateToProps = (state) => {
   return {
     users: state.root.users,
+    loading: state.root.loading,
   };
 };
 

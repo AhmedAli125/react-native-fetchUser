@@ -6,6 +6,7 @@ import {
   CLEAR_CURRENT_USER,
   DELETE_USER,
   REMOVE_FROM_DELETED,
+  REMOVE_TOAST,
 } from '../constants/type';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   loading: false,
   error: null,
   totalPages: 0,
+  toast: {msg: '', flag: false},
 };
 
 export default (state = initialState, action) => {
@@ -70,6 +72,7 @@ export default (state = initialState, action) => {
         ...state,
         users: allUsers,
         deletedUsers: newDeletedUsers,
+        toast: {msg: 'User Deleted Successfully', flag: true},
       };
     case REMOVE_FROM_DELETED:
       let recoveredUser = state.deletedUsers.find(
@@ -85,6 +88,12 @@ export default (state = initialState, action) => {
         ...state,
         deletedUsers: deletedArray,
         users: [...state.users, recoveredUser],
+        toast: {msg: 'User Removed from Deleted List', flag: true},
+      };
+    case REMOVE_TOAST:
+      return {
+        ...state,
+        toast: {msg: '', flag: false},
       };
     default:
       return state;
